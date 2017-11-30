@@ -9,7 +9,14 @@ public class EventoTeatro implements IEvento {
 
 	public void evento(){
 		
+		trazar();
+	}
+	private void trazar(){
 		System.out.println("Un tren llamado deseo");
+	}
+	public void eventoConOcupacion(long ocupacion) {
+
+		trazar();
 	}
 
 }

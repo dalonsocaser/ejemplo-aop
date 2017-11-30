@@ -1,25 +1,18 @@
 package es.caser.spring.aop.eventos;
 
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class APublico {
-	@Pointcut("execution(** es.caser.spring.aop.eventos.IEvento.evento(..))")
-	public void evaluarEvento() {
+	
+	@Pointcut("execution(* es.caser.spring.aop.eventos.IEvento.eventoConOcupacion(long)) " + "&& args(ocupacion)")
+	public void evaluarEvento(long ocupacion) {
 	}
 
-	@Around("evaluarEvento()")
-	public void watchPerformance(ProceedingJoinPoint jp) {
-		try {
-			System.out.println("Apagar moviles");
-			System.out.println("Tomando asientos");
-			jp.proceed();
-			System.out.println("CLAP CLAP CLAP!!!");
-		} catch (Throwable e) {
-			System.out.println("Solicitando devolucion");
-		}
+	@Before("evaluarEvento(ocupacion)")
+	public void ejecutarAspecto(long ocupacion) {
+		System.out.println("ocupacion:"+ocupacion);
 	}
 }

@@ -6,10 +6,15 @@ import org.springframework.stereotype.Component;
 @Component
 @Qualifier("concierto")
 public class EventoConcierto implements IEvento {
-
-	public void evento() {
-		System.out.println("Concierto de u2");	
+	public void evento(){
 		
+		trazar();
 	}
+	private void trazar(){
+		System.out.println("Concierto de u2");
+	}
+	public void eventoConOcupacion(long ocupacion) {
 
+		trazar();
+	}
 }

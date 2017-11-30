@@ -9,10 +9,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import es.caser.spring.aop.eventos.IEvento;
 
-
-
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes=AopSampleConfig.class)
+@ContextConfiguration(classes = AopSampleConfig.class)
 public class TestAopSample {
 	@Autowired
 	@Qualifier("concierto")
@@ -20,22 +18,13 @@ public class TestAopSample {
 	@Autowired
 	@Qualifier("teatro")
 	private IEvento teatro;
+
 	@Test
-	public void shouldWork_whenCallingAllEvents_withoutData(){
-		try {
-			concierto.evento();
-		}
-		catch (Exception ex){
-			
-		}
-		try {
-			teatro.evento();
-		}
-		catch (Exception ex){
-			
-		}
-		
-		
+	public void shouldWork_whenCallingAllEvents_withoutData() {
+
+		concierto.eventoConOcupacion(200l);		
+		teatro.eventoConOcupacion(300l);
+
 	}
 
 }
