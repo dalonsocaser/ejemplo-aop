@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Qualifier("teatro")
 public class EventoTeatro implements IEvento {
 
-	public void evento() throws Exception{
+	public void evento(){
 		
 		System.out.println("Un tren llamado deseo");
 	}

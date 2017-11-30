@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 @Qualifier("concierto")
 public class EventoConcierto implements IEvento {
 
-	public void evento()throws Exception {
-		System.out.println("Concierto de u2");		
-		throw new Exception ("Se cancela");
+	public void evento() {
+		System.out.println("Concierto de u2");	
+		
 	}
 
 }

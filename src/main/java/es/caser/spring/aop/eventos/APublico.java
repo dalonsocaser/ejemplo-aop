@@ -8,20 +8,19 @@ import org.aspectj.lang.annotation.Before;
 @Aspect
 public class APublico {
 	@Before("execution(** es.caser.spring.aop.eventos.IEvento.evento(..))")
-	public void silenceCellPhones() {
-		System.out.println("Silencing cell phones");
-	
+	public void apagarMoviles() {
+		System.out.println("Apagando los moviles");	
 	}
 	@Before("execution(** es.caser.spring.aop.eventos.IEvento.evento(..))")
-	public void takeSeats() {
-	System.out.println("Taking seats");
+	public void toamrAsientos() {
+	System.out.println("Ocupen sus asientos");
 	}
 	@AfterReturning("execution(** es.caser.spring.aop.eventos.IEvento.evento(..))")
-	public void applause() {
+	public void aplaudir() {
 	System.out.println("CLAP CLAP CLAP!!!");
 	}
 	@AfterThrowing("execution(** es.caser.spring.aop.eventos.IEvento.evento(..))")
-	public void demandRefund() {
-	System.out.println("Demanding a refund");
+	public void solicitarDevolucion() {
+	System.out.println("Solicitando devolucion");
 	}
 }
