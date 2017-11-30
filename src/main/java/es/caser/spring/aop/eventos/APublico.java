@@ -1,26 +1,25 @@
 package es.caser.spring.aop.eventos;
 
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class APublico {
-	@Before("execution(** es.caser.spring.aop.eventos.IEvento.evento(..))")
-	public void apagarMoviles() {
-		System.out.println("Apagando los moviles");	
+	@Pointcut("execution(** es.caser.spring.aop.eventos.IEvento.evento(..))")
+	public void evaluarEvento() {
 	}
-	@Before("execution(** es.caser.spring.aop.eventos.IEvento.evento(..))")
-	public void toamrAsientos() {
-	System.out.println("Ocupen sus asientos");
-	}
-	@AfterReturning("execution(** es.caser.spring.aop.eventos.IEvento.evento(..))")
-	public void aplaudir() {
-	System.out.println("CLAP CLAP CLAP!!!");
-	}
-	@AfterThrowing("execution(** es.caser.spring.aop.eventos.IEvento.evento(..))")
-	public void solicitarDevolucion() {
-	System.out.println("Solicitando devolucion");
+
+	@Around("evaluarEvento()")
+	public void watchPerformance(ProceedingJoinPoint jp) {
+		try {
+			System.out.println("Apagar moviles");
+			System.out.println("Tomando asientos");
+			jp.proceed();
+			System.out.println("CLAP CLAP CLAP!!!");
+		} catch (Throwable e) {
+			System.out.println("Solicitando devolucion");
+		}
 	}
 }
